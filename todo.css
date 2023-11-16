@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(5, 5, 43);
+}
+
+header {
+    color: white;
+    position: relative;
+    text-align: center;
+}
+
+
+input[type="text"] {
+    width: 24em;
+    height: 2em;
+    border-radius: 5px;
+}
+
+.todoFormsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#todoform {
+    position: relative;
+    margin-top: 5em;
+    justify-content: center;
+    text-align: center;
+    width: 24em;
+    height: 2em;
+}
+
+p {
+    color: white;
+}
+
+
+#plusIcon {
+    font-size: 18px;
+}

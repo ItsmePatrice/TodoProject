@@ -1,3 +1,5 @@
+// find error with file and link the file to the html properly
+
 // SELECT ELEMENTS
 const form = document.getElementById("todoform");
 const todoInput = document.getElementById("newtodo");
