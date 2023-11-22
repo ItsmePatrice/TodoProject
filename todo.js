@@ -1,40 +1,25 @@
-// find error with file and link the file to the html properly
+import StorageManager from "../TodoProject/StorageManager";
 
-// SELECT ELEMENTS
 const form = document.getElementById("todoform");
-const todoInput = document.getElementById("newtodo");
 
-let todos = [];
+const storageManager = new StorageManager();
 
-// FORM SUBMIST
+let todos = []; // each todoObject must have an id when created
+
+// FORM SUBMIT
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // prevent the page from reloading
-
-  saveTodo();
+  const todoInput = document.getElementById("newtodo").value;
+  addTodo(todoInput);
+  document.getElementById("newtodo").value = "";
 });
 
-// SAVE TODO
-function saveTodo() {
-  const todoValue = todoInput.value;
+function addTodo(todoInput) {
+  const todo = { description: todoInput, id: generateRandomId() };
+  todos.push(todo);
+  // allow storageManager to manage all memory stuff including todos list so you don't need push
+}
 
-  // Check if the todo is empty
-  const isEmpty = todoValue === " ";
-
-  //check for duplicate todos
-  const isDuplicate = todos.some((todo) => todo.value.toUpperCase() === todoValue.toUpperCase());
-
-
-  if (isEmpty) {
-    alert("Todo is empty");
-  } else if(isDuplicate) {
-    alert("Todo already exists.");
-  } else {
-    todos.push({
-    value: todoValue,
-    checked: false,
-    color: "#" + Math.floor(Math.random()*16777215).toString(16);
-  });
-    todoInput.value = " ";
-  }
-
+function generateRandomId() {
+  return uuidv4();
 }

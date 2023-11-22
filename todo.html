@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do list in Javascript</title>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="todo.css">
     <link rel="stylesheet" href="./todo.css">
-    <script src="./todo.js"></script>
+    <script type="module" src="./todo.js"></script>
+    <script type="module" src="./StorageManager.js"></script>
+    
     
 </head>
 <body>
-
 
     <header>
         <h1>Let's get things done!</h1>
@@ -20,7 +21,7 @@
 
     <div class="todoFormsContainer">
         <form id="todoform">
-            <input type="text" name="newtodo" id="newtodo" placeholder="I will do ...">
+            <input type="text" name="newtodo" id="newtodo" placeholder="I will do ..." required>
             <button type="submit">
                 <i class="bi bi-plus" id="plusIcon"></i>
             </button>
