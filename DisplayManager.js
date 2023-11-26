@@ -5,8 +5,8 @@ export default class DisplayManager {
    * get the array of todos
    */
   getTodos() {
-    const todos = JSON.parse(localStorage.getItem(this.STORAGE_KEY_NOTES));
-    return todos ? todos : [];
+    const todosList = document.getElementById("todos-list");
+    return todosList;
   }
 
   /**
@@ -21,30 +21,65 @@ export default class DisplayManager {
    * Add a todo to the page
    */
   addTodo(todo) {
-    const todos = this.getTodos() || [];
-    todos.push(todo);
-    localStorage.setItem(this.STORAGE_KEY_NOTES, JSON.stringify(todos));
+    const todosList = this.getTodos();
+    let newTodo = document.createElement("div");
+    const todoMessage = todo.description;
+
+    // create paragraph element containing todo description
+    let pElt = document.createElement("p");
+    pElt.textContent = todoMessage;
+
+    // create bibiCircleElt
+    let bibiCircleElt = document.createElement("i");
+    bibiCircleElt.className = "bi bi-circle";
+
+    // create checked bibiCircleElt
+    let checkedbibiCircleElt = document.createElement("i");
+    checkedbibiCircleElt.className = "bi bi-check-circle-fill";
+    checkedbibiCircleElt.style.display = "none";
+
+    // create the pencil square element
+    let bibiPencilSquareElt = document.createElement("i");
+    bibiPencilSquareElt.className = "bi bi-pencil-square";
+
+    // create trash Icon element
+    let trashIcon = document.createElement("i");
+    trashIcon.className = "bi bi-trash";
+
+    newTodo.id = todo.id;
+
+    newTodo.appendChild(pElt);
+    newTodo.appendChild(bibiCircleElt);
+    newTodo.appendChild(bibiPencilSquareElt);
+    newTodo.appendChild(checkedbibiCircleElt);
+    newTodo.appendChild(trashIcon);
+
+    todosList.appendChild(newTodo);
   }
 
   /**
-   * Delete a todo from the page based on it's id
+   * Remove a todo from the page based on it's id
    */
   deleteTodoById(id) {
-    const todos = this.getTodos() || [];
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    const todosList = this.getTodos();
+    const childElements = todosList.children;
 
-    if (updatedTodos.length !== todos.length) {
-      localStorage.setItem(
-        this.STORAGE_KEY_NOTES,
-        JSON.stringify(updatedTodos)
-      );
+    for (const child of childElements) {
+      if (child.id === id) {
+        child.remove();
+      }
     }
   }
 
   /**
-   * Delete all the todos from the page
+   * Remove all the todos from the page
    */
-  deleteAllTodos() {
-    localStorage.clear();
+  removeAllTodos() {
+    const todosList = this.getTodos();
+    const childElements = todosList.children;
+
+    for (const child of childElements) {
+      child.remove();
+    }
   }
 }

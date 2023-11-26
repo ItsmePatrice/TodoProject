@@ -27,7 +27,7 @@ function deleteTodo(id) {
 
 function deleteAllTodos() {
   storageManager.deleteAllTodos();
-  displayManager.deleteAllTodos();
+  displayManager.removeAllTodos();
 }
 
 function generateRandomId() {
