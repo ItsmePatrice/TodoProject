@@ -1,62 +1,60 @@
 export default class StorageManager {
-  getNotes() {
-    //const notes = JSON.parse(localStorage.getItem(this.STORAGE_KEY_NOTES));
-    return notes ? notes : [];
-  }
-
-  getNoteById(id) {
-    const note = this.getNotes().find((note) => note.id === id);
-    return note !== undefined ? note : undefined;
-  }
-
-  setNotes(notesArray) {
-    let notesTemp = this.getNotes();
-
-    for (let i = 0; i < notesArray.length; i++) {
-      notesTemp.push(notesArray[i]);
-    }
-
-    localStorage.setItem(this.STORAGE_KEY_NOTES, JSON.stringify(notesTemp));
+  constructor() {
+    this.todos = [];
+    this.STORAGE_KEY_NOTES = "todos";
   }
 
   /**
-   * Remplaces les items du storage par notesArray
-   * @param {Array<Note>} notesArray tableau de notes à mettre
+   * get the array of todos
    */
-  addNotes(notesArray) {
-    localStorage.setItem(this.STORAGE_KEY_NOTES, JSON.stringify(notesArray));
+  getTodos() {
+    const todos = JSON.parse(localStorage.getItem(this.STORAGE_KEY_NOTES));
+    return todos ? todos : [];
   }
 
   /**
-   * Ajoute une nouvelle note au Storage
-   * @param {Note} note note à ajouter
+   * get a todo based on it's id
    */
-  addNote(note) {
-    const notes = this.getNotes() || [];
-    notes.push(note);
-    localStorage.setItem(this.STORAGE_KEY_NOTES, JSON.stringify(notes));
+  getTodoById(id) {
+    const todo = this.getTodos().find((todo) => todo.id === id);
+    return todo !== undefined ? todo : undefined;
   }
 
   /**
-   * TODO : Supprime une note en fonction de son ID
-   * @param {string} id identifiant de la note
+   * Replace storage items by the array of todos
    */
-  deleteNoteById(id) {
-    const notes = this.getNotes();
-    const updatedNotes = notes.filter((note) => note.id !== id);
+  setTodos(todosArray) {
+    localStorage.setItem(this.STORAGE_KEY_NOTES, JSON.stringify(todosArray));
+  }
 
-    if (updatedNotes.length !== notes.length) {
+  /**
+   * Add a todo to the storage
+   */
+  addTodo(todo) {
+    const todos = this.getTodos() || [];
+    todos.push(todo);
+    localStorage.setItem(this.STORAGE_KEY_NOTES, JSON.stringify(todos));
+  }
+
+  /**
+   * Delete a todo based on it's ID
+   */
+  deleteTodoById(id) {
+    const todos = this.getTodos() || [];
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+
+    if (updatedTodos.length !== todos.length) {
       localStorage.setItem(
         this.STORAGE_KEY_NOTES,
-        JSON.stringify(updatedNotes)
+        JSON.stringify(updatedTodos)
       );
     }
   }
 
   /**
-   * TODO : Supprime toutes les notes du storage
+   * Delete all the todos in storage
    */
-  deleteAllNotes() {
+  deleteAllTodos() {
     localStorage.clear();
   }
 }

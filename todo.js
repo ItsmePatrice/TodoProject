@@ -4,8 +4,6 @@ const form = document.getElementById("todoform");
 
 const storageManager = new StorageManager();
 
-let todos = []; // each todoObject must have an id when created
-
 // FORM SUBMIT
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // prevent the page from reloading
