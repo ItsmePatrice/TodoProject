@@ -1,8 +1,10 @@
 import StorageManager from "../TodoProject/StorageManager";
+import DisplayManager from "./DisplayManager";
 
 const form = document.getElementById("todoform");
 
-const storageManager = new StorageManager();
+let storageManager = new StorageManager();
+let displayManager = new DisplayManager();
 
 // FORM SUBMIT
 form.addEventListener("submit", function (event) {
@@ -14,8 +16,18 @@ form.addEventListener("submit", function (event) {
 
 function addTodo(todoInput) {
   const todo = { description: todoInput, id: generateRandomId() };
-  todos.push(todo);
-  // allow storageManager to manage all memory stuff including todos list so you don't need push
+  storageManager.addTodo(todo);
+  displayManager.addTodo(todo);
+}
+
+function deleteTodo(id) {
+  storageManager.deleteTodoById(id);
+  displayManager.deleteTodoById(id);
+}
+
+function deleteAllTodos() {
+  storageManager.deleteAllTodos();
+  displayManager.deleteAllTodos();
 }
 
 function generateRandomId() {

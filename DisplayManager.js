@@ -1,9 +1,5 @@
-export default class StorageManager {
-  constructor() {
-    this.todos = [];
-    this.STORAGE_KEY_NOTES = "todos";
-    this.setTodos([]);
-  }
+export default class DisplayManager {
+  constructor() {}
 
   /**
    * get the array of todos
@@ -22,14 +18,7 @@ export default class StorageManager {
   }
 
   /**
-   * Replace storage items by the array of todos
-   */
-  setTodos(todosArray) {
-    localStorage.setItem(this.STORAGE_KEY_NOTES, JSON.stringify(todosArray));
-  }
-
-  /**
-   * Add a todo to the storage
+   * Add a todo to the page
    */
   addTodo(todo) {
     const todos = this.getTodos() || [];
@@ -38,7 +27,7 @@ export default class StorageManager {
   }
 
   /**
-   * Delete a todo based on it's ID
+   * Delete a todo from the page based on it's id
    */
   deleteTodoById(id) {
     const todos = this.getTodos() || [];
@@ -53,7 +42,7 @@ export default class StorageManager {
   }
 
   /**
-   * Delete all the todos in storage
+   * Delete all the todos from the page
    */
   deleteAllTodos() {
     localStorage.clear();
