@@ -1,13 +1,23 @@
-import StorageManager from "../TodoProject/StorageManager";
-import DisplayManager from "./DisplayManager";
+import StorageManager from "./StorageManager.js";
+import DisplayManager from "./DisplayManager.js";
 
-const form = document.getElementById("todoform");
+const nameForm = document.getElementsByClassName("nameForm");
+const toDoForm = document.getElementById("todoform");
 
 let storageManager = new StorageManager();
 let displayManager = new DisplayManager();
 
-// FORM SUBMIT
-form.addEventListener("submit", function (event) {
+// Add an extra funtionality to take in the user's name
+
+//userName = undefined;
+
+/*nameForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // prevent the page from reloading
+  userName = document.getElementById("userName").value;
+});*/
+
+// toDoForm SUBMIT
+toDoForm.addEventListener("submit", function (event) {
   event.preventDefault(); // prevent the page from reloading
   const todoInput = document.getElementById("newtodo").value;
   addTodo(todoInput);
@@ -20,7 +30,7 @@ function addTodo(todoInput) {
   displayManager.addTodo(todo);
 }
 
-function deleteTodo(id) {
+function deleteTodoById(id) {
   storageManager.deleteTodoById(id);
   displayManager.deleteTodoById(id);
 }

@@ -10,19 +10,12 @@ export default class DisplayManager {
   }
 
   /**
-   * get a todo based on it's id
-   */
-  getTodoById(id) {
-    const todo = this.getTodos().find((todo) => todo.id === id);
-    return todo !== undefined ? todo : undefined;
-  }
-
-  /**
    * Add a todo to the page
    */
   addTodo(todo) {
     const todosList = this.getTodos();
     let newTodo = document.createElement("div");
+
     const todoMessage = todo.description;
 
     // create paragraph element containing todo description
@@ -38,21 +31,11 @@ export default class DisplayManager {
     checkedbibiCircleElt.className = "bi bi-check-circle-fill";
     checkedbibiCircleElt.style.display = "none";
 
-    // create the pencil square element
-    let bibiPencilSquareElt = document.createElement("i");
-    bibiPencilSquareElt.className = "bi bi-pencil-square";
-
-    // create trash Icon element
-    let trashIcon = document.createElement("i");
-    trashIcon.className = "bi bi-trash";
-
     newTodo.id = todo.id;
 
     newTodo.appendChild(pElt);
     newTodo.appendChild(bibiCircleElt);
-    newTodo.appendChild(bibiPencilSquareElt);
     newTodo.appendChild(checkedbibiCircleElt);
-    newTodo.appendChild(trashIcon);
 
     todosList.appendChild(newTodo);
   }

@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(5, 5, 43);
+    background-color: rgb(8, 22, 49);
 }
 
 header {
@@ -8,32 +8,57 @@ header {
     text-align: center;
 }
 
-
 input[type="text"] {
     width: 24em;
     height: 2em;
-    border-radius: 5px;
 }
 
 .todoFormsContainer {
     display: flex;
     justify-content: center;
+    margin-top: 5em;
 }
 
 #todoform {
-    position: relative;
-    margin-top: 5em;
-    justify-content: center;
     text-align: center;
     width: 24em;
     height: 2em;
+}
+
+#todos-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#todos-list div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0em;
+    background-color: rgb(123, 141, 176);
+    border-radius: 1em;
+    width: 17em;
+    height: 2.5em;
+}
+
+
+#todos-list div i {
+    margin-right: 3em; /* Adjust margin */
+    font-size: 2em; /* Adjust icon size */
 }
 
 p {
     color: white;
 }
 
-
-#plusIcon {
-    font-size: 18px;
+button {
+    position: fixed;
+    background-color: rgb(8, 22, 49);
+    color: white;
+    border: none;
+    font-size: 2.2em;
+    margin-left: 11.5em;
+    margin-top: 0;
 }
