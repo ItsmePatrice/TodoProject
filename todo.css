@@ -2,63 +2,125 @@ body {
     background-color: rgb(8, 22, 49);
 }
 
-header {
-    color: white;
+.clock {
+    width: 200px;
+    height: 200px;
+    border: 8px solid transparent;
+    border-radius: 50%;
     position: relative;
-    text-align: center;
+    font-size: 16px;
+    box-shadow: 0 0 0 8px #fff; /* White border */
+}
+
+.hand {
+  position: absolute;
+  transform-origin: 50% 100%;
+  background-color: #333;
+}
+
+.hour-hand {
+  height: 50px;
+  width: 4px;
+  top: 50px;
+  left: 98px;
+}
+
+.minute-hand {
+  height: 80px;
+  width: 2px;
+  top: 30px;
+  left: 99px;
+}
+
+.second-hand {
+  height: 90px;
+  width: 1px;
+  top: 20px;
+  left: 99.5px;
+}
+
+.number {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+header {
+  color: white;
+  position: relative;
+  text-align: center;
+}
+
+header span::before {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  background-color: rgb(221, 110, 20);
+  width: 3em;
+  height: 0.2em;
+  opacity: 0.8;
 }
 
 input[type="text"] {
-    width: 24em;
-    height: 2em;
+  width: 24em;
+  height: 2em;
 }
 
 .todoFormsContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 5em;
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
 }
 
 #todoform {
-    text-align: center;
-    width: 24em;
-    height: 2em;
+  text-align: center;
+  width: 24em;
+  height: 2em;
 }
 
 #todos-list {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #todos-list div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1em 0em;
-    background-color: rgb(123, 141, 176);
-    border-radius: 1em;
-    width: 17em;
-    height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0em;
+  background-color: rgb(123, 141, 176);
+  border-radius: 1em;
+  width: 17em;
+  height: 2.5em;
 }
 
-
 #todos-list div i {
-    margin-right: 3em; /* Adjust margin */
-    font-size: 2em; /* Adjust icon size */
+  position: relative;
+  margin-right: 6em;
+  font-size: 2em; 
+}
+
+#todos-list div p {
+  position: absolute;
 }
 
 p {
-    color: white;
+  color: white;
 }
 
 button {
-    position: fixed;
-    background-color: rgb(8, 22, 49);
-    color: white;
-    border: none;
-    font-size: 2.2em;
-    margin-left: 11.5em;
-    margin-top: 0;
+  position: absolute;
+  background-color: rgb(8, 22, 49);
+  color: rgb(221, 110, 20);
+  border: none;
+  font-size: 2.2em;
+  margin-left: 11.5em;
+  margin-top: 0;
+}
+
+.hand {
+  position: absolute;
+  background-color: rgb(221, 110, 20);
 }

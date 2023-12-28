@@ -33,15 +33,15 @@ export default class DisplayManager {
 
     newTodo.id = todo.id;
 
-    newTodo.appendChild(pElt);
     newTodo.appendChild(bibiCircleElt);
+    newTodo.appendChild(pElt);
     newTodo.appendChild(checkedbibiCircleElt);
 
     todosList.appendChild(newTodo);
   }
 
   /**
-   * Remove a todo from the page based on it's id
+   * Remove a todo from the page *based on it's id
    */
   deleteTodoById(id) {
     const todosList = this.getTodos();
@@ -57,7 +57,7 @@ export default class DisplayManager {
   /**
    * Remove all the todos from the page
    */
-  removeAllTodos() {
+  deleteAllTodos() {
     const todosList = this.getTodos();
     const childElements = todosList.children;
 
