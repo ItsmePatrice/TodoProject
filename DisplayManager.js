@@ -25,6 +25,9 @@ export default class DisplayManager {
     // create bibiCircleElt
     let bibiCircleElt = document.createElement("i");
     bibiCircleElt.className = "bi bi-circle";
+    bibiCircleElt.addEventListener("click", () =>
+      this.toggleTodoState(bibiCircleElt)
+    );
 
     // create checked bibiCircleElt
     let checkedbibiCircleElt = document.createElement("i");
@@ -34,10 +37,29 @@ export default class DisplayManager {
     newTodo.id = todo.id;
 
     newTodo.appendChild(bibiCircleElt);
-    newTodo.appendChild(pElt);
     newTodo.appendChild(checkedbibiCircleElt);
+    newTodo.appendChild(pElt);
 
     todosList.appendChild(newTodo);
+  }
+
+  /**
+   * Toggle the state of a todo when the unchecked icon is clicked
+   */
+  toggleTodoState(bibiCircleElt) {
+    const checkedbibiCircleElt = bibiCircleElt.nextElementSibling;
+    bibiCircleElt.style.display = "none";
+    checkedbibiCircleElt.style.display = "block";
+
+    setTimeout(() => {
+      const todoElement = bibiCircleElt.parentElement;
+      todoElement.classList.add("fall-animation");
+
+      // Wait for the animation to complete before removing the todo
+      setTimeout(() => {
+        this.deleteTodoById(todoElement.id);
+      }, 500);
+    }, 100);
   }
 
   /**

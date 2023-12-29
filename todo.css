@@ -124,3 +124,17 @@ button {
   position: absolute;
   background-color: rgb(221, 110, 20);
 }
+
+.fall-animation {
+  animation: fallDown 0.5s ease-out; 
+}
+
+@keyframes fallDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100px); 
+    opacity: 0; 
+  }
+}
