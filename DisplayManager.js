@@ -40,6 +40,8 @@ export default class DisplayManager {
     newTodo.appendChild(checkedbibiCircleElt);
     newTodo.appendChild(pElt);
 
+    newTodo.classList.add("appear-animation");
+
     todosList.appendChild(newTodo);
   }
 
