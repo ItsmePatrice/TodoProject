@@ -157,11 +157,11 @@ button {
   }
 }
 
-/* This section is for the motivational messages"*/
+/* Section is for the motivational messages"*/
 #quote-container {
   position: absolute;
   text-align: center;
-  margin: 3em 0 1em 80em;
+  margin: 3em 0 1em 65em;
   color: #fff;
 }
 
@@ -198,4 +198,48 @@ button {
   to {
     opacity: 0;
   }
+}
+
+/* Section is for the countdown timer*/
+
+#countdown-container {
+  text-align: center;
+  margin-top: 1.25em; 
+}
+
+#countdown-minutes {
+  position: absolute;
+  width: 10em;
+  text-align: center;
+  margin: 20em 0 0 35em; 
+}
+
+#progress-bar-container {
+  width: 9%;
+  height: 1.25em; 
+  background-color: #eee;
+  margin: 25em 0 0 76.59em;
+  position: absolute;
+}
+
+#progress-bar {
+  height: 100%;
+  background-color: rgb(221, 110, 20);
+  width: 0;
+  transition: 1s ease-in-out;
+  /*border-radius:  ;*/
+}
+
+#startCountdownButton {
+  cursor: pointer;
+  height: 2em;
+  width: 4.5em;
+  position: absolute;
+  margin: 8.75em 0 0 13.05em;
+  border: rgb(221, 110, 20) solid;
+}
+
+#startCountdownButton h6 {
+  position: absolute;
+  margin-top: -1em;
 }

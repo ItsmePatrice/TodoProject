@@ -18,9 +18,18 @@
 
     <span><div id="quote-container">
         <span><h3>Stay focused</h3></span>
-        <span><p id="quote-text" class="quote-fade-in">lol</p></span>
+        <span><p id="quote-text" class="quote-fade-in"></p></span>
       </div>
     </span>
+
+    <div id="countdown-container">
+        <input type="number" id="countdown-minutes" placeholder="Enter minutes" min="1" required>
+        <button id="startCountdownButton" onclick="startCountdown()"><h6>Start Countdown</h6></button>
+        <div id="progress-bar-container">
+          <div id="progress-bar"></div>
+        </div>
+        <div id="countdown"></div>
+    </div>
 
     <!--<form action=""  class="nameForm">
         <label for="name">What's your name?</label>

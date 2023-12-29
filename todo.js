@@ -111,3 +111,41 @@ getRandomQuote();
 
 // Set interval to change quote every 10 seconds
 setInterval(getRandomQuote, 10000);
+
+// Section for the countdown timer
+function startCountdown() {
+  const minutesInput = document.getElementById("countdown-minutes");
+  const countdownDisplay = document.getElementById("countdown");
+  const progressBar = document.getElementById("progress-bar");
+
+  const minutes = parseInt(minutesInput.value);
+
+  if (isNaN(minutes) || minutes <= 0) {
+    alert("Please enter a valid positive number for minutes.");
+    return;
+  }
+
+  let seconds = minutes * 60;
+
+  countdownDisplay.textContent = `${minutes}m 0s`;
+
+  const countdownInterval = setInterval(() => {
+    const minutesRemaining = Math.floor(seconds / 60);
+    const secondsRemaining = seconds % 60;
+
+    countdownDisplay.textContent = `${minutesRemaining}m ${secondsRemaining}s`;
+
+    // Update the progress bar width
+    const totalSeconds = minutes * 60;
+    const remainingPercentage = (seconds / totalSeconds) * 100;
+    progressBar.style.width = `${100 - remainingPercentage}%`;
+
+    if (seconds === 0) {
+      clearInterval(countdownInterval);
+      countdownDisplay.textContent = "Time's up!";
+      progressBar.style.width = "100%";
+    }
+
+    seconds--;
+  }, 1000);
+}
