@@ -112,6 +112,10 @@ getRandomQuote();
 // Set interval to change quote every 10 seconds
 setInterval(getRandomQuote, 10000);
 
+document
+  .getElementById("startCountdownButton")
+  .addEventListener("click", startCountdown);
+
 // Section for the countdown timer
 function startCountdown() {
   const minutesInput = document.getElementById("countdown-minutes");
