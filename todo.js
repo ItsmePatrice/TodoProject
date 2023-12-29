@@ -74,3 +74,40 @@ setInterval(updateClock, 1000);
 
 // Initial clock update
 updateClock();
+
+// Section for the motivational messages
+
+// Add this to your existing JavaScript code
+const quotesAndTips = [
+  "The only way to do great work is to love what you do. - Steve Jobs",
+  "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+  "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+  "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+  "Believe you can and you're halfway there. - Theodore Roosevelt",
+  "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+];
+
+function getRandomQuote() {
+  const quoteDisplay = document.getElementById("quote-text");
+
+  // Fade out the existing quote
+  quoteDisplay.classList.remove("quote-fade-in");
+  quoteDisplay.classList.add("quote-fade-out");
+
+  setTimeout(() => {
+    // Get a new random quote
+    const randomIndex = Math.floor(Math.random() * quotesAndTips.length);
+    const randomQuote = quotesAndTips[randomIndex];
+
+    // Update the quote text and fade it in
+    quoteDisplay.textContent = randomQuote;
+    quoteDisplay.classList.remove("quote-fade-out");
+    quoteDisplay.classList.add("quote-fade-in");
+  }, 1000); // Wait for 1 second before updating the quote
+}
+
+// Initial quote display
+getRandomQuote();
+
+// Set interval to change quote every 10 seconds
+setInterval(getRandomQuote, 10000);

@@ -156,3 +156,46 @@ button {
     opacity: 0; 
   }
 }
+
+/* This section is for the motivational messages"*/
+#quote-container {
+  position: absolute;
+  text-align: center;
+  margin: 3em 0 1em 80em;
+  color: #fff;
+}
+
+#quote-text {
+  position: relative;
+  font-size: 20px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Animation classes */
+.quote-fade-in {
+  animation: fadeIn 2s forwards;
+}
+
+.quote-fade-out {
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
