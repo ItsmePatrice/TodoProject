@@ -7,9 +7,10 @@ body {
     height: 200px;
     border: 8px solid transparent;
     border-radius: 50%;
-    position: relative;
+    position: absolute;
     font-size: 16px;
-    box-shadow: 0 0 0 8px #fff; /* White border */
+    box-shadow: 0 0 0 8px #fff; 
+    margin-left: 18em;
 }
 
 .hand {
