@@ -6,6 +6,8 @@ const toDoForm = document.getElementById("todoform");
 let storageManager = new StorageManager();
 let displayManager = new DisplayManager();
 
+let CountdownInterval;
+
 // toDoForm SUBMIT
 toDoForm.addEventListener("submit", function (event) {
   event.preventDefault(); // prevent the page from reloading
@@ -112,6 +114,11 @@ function startCountdown() {
 
   const minutes = parseInt(minutesInput.value);
 
+  if (CountdownInterval) {
+    console.log("Countdown is already in progress. Ignoring start request.");
+    return;
+  }
+
   if (isNaN(minutes) || minutes <= 0) {
     alert("Please enter a valid positive number for minutes.");
     return;
@@ -121,7 +128,7 @@ function startCountdown() {
 
   countdownDisplay.textContent = `${minutes}m 0s`;
 
-  const countdownInterval = setInterval(() => {
+  CountdownInterval = setInterval(() => {
     const minutesRemaining = Math.floor(seconds / 60);
     const secondsRemaining = seconds % 60;
 
@@ -141,3 +148,37 @@ function startCountdown() {
     seconds--;
   }, 1000);
 }
+
+function pauseTimer() {
+  clearInterval(countdownInterval);
+}
+
+function resumeTimer() {
+  startCountdown();
+}
+
+function restartTimer() {
+  pauseCountdown();
+  const minutesInput = document.getElementById("countdown-minutes");
+  const progressBar = document.getElementById("progress-bar");
+
+  minutesInput.value = "";
+  progressBar.style.width = "0%";
+}
+
+let playPauseButton = document.getElementById("playPauseButton");
+
+playPauseButton.addEventListener("click", function () {
+  var icon = document.getElementById("playPauseIcon");
+
+  // Toggle between play and pause icons
+  if (icon.classList.contains("fa-play")) {
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    resumeTimer();
+  } else {
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    pauseTimer();
+  }
+});
