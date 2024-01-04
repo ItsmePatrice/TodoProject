@@ -8,8 +8,10 @@ let displayManager = new DisplayManager();
 
 let CountdownInterval;
 let PausedTime = 0;
-let playPauseButton = document.getElementById("playPauseButton");
+
+let PlayPauseButton = document.getElementById("playPauseButton");
 let RestartTimerButton = document.getElementById("restartButton");
+let StopTimerButton = document.getElementById("stopButton");
 
 // toDoForm SUBMIT
 toDoForm.addEventListener("submit", function (event) {
@@ -179,6 +181,7 @@ function resumeTimer() {
 }
 
 function restartTimer() {
+  // if timer is on pause,
   // Stop the current countdown if it's running
   clearInterval(CountdownInterval);
   // Start a new countdown
@@ -188,6 +191,7 @@ function restartTimer() {
 function stopTimer() {
   // Stop the current countdown if it's running
   clearInterval(CountdownInterval);
+  CountdownInterval = 0;
 
   // Reset the UI elements
   const countdownDisplay = document.getElementById("countdown");
@@ -197,7 +201,7 @@ function stopTimer() {
   progressBar.style.width = "0%";
 }
 
-playPauseButton.addEventListener("click", function () {
+PlayPauseButton.addEventListener("click", function () {
   var icon = document.getElementById("playPauseIcon");
 
   // Toggle between play and pause icons
@@ -213,3 +217,4 @@ playPauseButton.addEventListener("click", function () {
 });
 
 RestartTimerButton.addEventListener("click", restartTimer);
+StopTimerButton.addEventListener("click", stopTimer);
