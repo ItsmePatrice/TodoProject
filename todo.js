@@ -8,6 +8,8 @@ let displayManager = new DisplayManager();
 
 let CountdownInterval;
 let PausedTime = 0;
+let playPauseButton = document.getElementById("playPauseButton");
+let RestartTimerButton = document.getElementById("restartButton");
 
 // toDoForm SUBMIT
 toDoForm.addEventListener("submit", function (event) {
@@ -105,7 +107,16 @@ setInterval(getRandomQuote, 10000);
 
 document
   .getElementById("startCountdownButton")
-  .addEventListener("click", startCountdown);
+  .addEventListener("click", function () {
+    if (CountdownInterval) {
+      alert(
+        "A countdown is already in progress. Please wait for it to complete or cancel it."
+      );
+      return;
+    }
+
+    startCountdown();
+  });
 
 // Section for the countdown timer
 function startCountdown() {
@@ -115,13 +126,6 @@ function startCountdown() {
   var icon = document.getElementById("playPauseIcon");
 
   const minutes = parseInt(minutesInput.value);
-
-  if (CountdownInterval && icon.classList.contains("fa-play")) {
-    alert(
-      "A countdown is already in progress. Please wait for it to complete or cancel it."
-    );
-    return;
-  }
 
   if (isNaN(minutes) || minutes <= 0) {
     alert("Please enter a valid positive number for minutes.");
@@ -177,16 +181,6 @@ function resumeTimer() {
 function restartTimer() {
   // Stop the current countdown if it's running
   clearInterval(CountdownInterval);
-
-  // Reset the UI elements and input
-  const countdownDisplay = document.getElementById("countdown");
-  const progressBar = document.getElementById("progress-bar");
-  const minutesInput = document.getElementById("countdown-minutes");
-
-  countdownDisplay.textContent = "";
-  progressBar.style.width = "0%";
-  minutesInput.value = "";
-
   // Start a new countdown
   startCountdown();
 }
@@ -203,8 +197,6 @@ function stopTimer() {
   progressBar.style.width = "0%";
 }
 
-let playPauseButton = document.getElementById("playPauseButton");
-
 playPauseButton.addEventListener("click", function () {
   var icon = document.getElementById("playPauseIcon");
 
@@ -219,3 +211,5 @@ playPauseButton.addEventListener("click", function () {
     pauseTimer();
   }
 });
+
+RestartTimerButton.addEventListener("click", restartTimer);
