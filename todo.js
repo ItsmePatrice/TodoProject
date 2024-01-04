@@ -76,8 +76,6 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // Section for the motivational messages
-
-// Add this to your existing JavaScript code
 const quotesAndTips = [
   "The only way to do great work is to love what you do. - Steve Jobs",
   "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
@@ -85,6 +83,8 @@ const quotesAndTips = [
   "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
   "Believe you can and you're halfway there. - Theodore Roosevelt",
   "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+  "Courage is not the abscence of fear, but the triumph over it. - Nelson Mandela",
+  "The glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
 ];
 
 function getRandomQuote() {
