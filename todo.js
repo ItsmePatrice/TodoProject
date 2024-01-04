@@ -1,24 +1,10 @@
 import StorageManager from "./StorageManager.js";
 import DisplayManager from "./DisplayManager.js";
 
-//const nameForm = document.getElementsByClassName("nameForm");
 const toDoForm = document.getElementById("todoform");
 
 let storageManager = new StorageManager();
 let displayManager = new DisplayManager();
-
-let uncheckedCircleIcon = document.getElementsByClassName("bi bi-circle");
-let checkedCircleIcon = document.getElementsByClassName(
-  "bi bi-check-circle-fill"
-);
-
-// Add an extra funtionality to take in the user's name
-//userName = undefined;
-
-/*nameForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // prevent the page from reloading
-  userName = document.getElementById("userName").value;
-});*/
 
 // toDoForm SUBMIT
 toDoForm.addEventListener("submit", function (event) {
@@ -34,11 +20,13 @@ function addTodo(todoInput) {
   displayManager.addTodo(todo);
 }
 
+// For future features
 function deleteTodoById(id) {
   storageManager.deleteTodoById(id);
   displayManager.deleteTodoById(id);
 }
 
+// For future features
 function deleteAllTodos() {
   storageManager.deleteAllTodos();
   displayManager.removeAllTodos();
