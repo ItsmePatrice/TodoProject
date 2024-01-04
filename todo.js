@@ -180,14 +180,6 @@ function resumeTimer() {
   startCountdown();
 }
 
-function restartTimer() {
-  // if timer is on pause,
-  // Stop the current countdown if it's running
-  clearInterval(CountdownInterval);
-  // Start a new countdown
-  startCountdown();
-}
-
 function stopTimer() {
   // Stop the current countdown if it's running
   clearInterval(CountdownInterval);
@@ -199,6 +191,20 @@ function stopTimer() {
 
   countdownDisplay.textContent = "";
   progressBar.style.width = "0%";
+}
+
+function restartTimer() {
+  stopTimer();
+  // If displayed, play button becomes pause button
+  var icon = document.getElementById("playPauseIcon");
+  if (icon.classList.contains("fa-play")) {
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+  }
+
+  PausedTime = 0;
+  // Start a new countdown
+  startCountdown();
 }
 
 PlayPauseButton.addEventListener("click", function () {
