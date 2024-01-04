@@ -7,6 +7,7 @@ let storageManager = new StorageManager();
 let displayManager = new DisplayManager();
 
 let CountdownInterval;
+let PausedTime = 0;
 
 // toDoForm SUBMIT
 toDoForm.addEventListener("submit", function (event) {
@@ -111,10 +112,14 @@ function startCountdown() {
   const minutesInput = document.getElementById("countdown-minutes");
   const countdownDisplay = document.getElementById("countdown");
   const progressBar = document.getElementById("progress-bar");
+  var icon = document.getElementById("playPauseIcon");
 
   const minutes = parseInt(minutesInput.value);
 
-  if (CountdownInterval) {
+  if (CountdownInterval && icon.classList.contains("fa-play")) {
+    alert(
+      "A countdown is already in progress. Please wait for it to complete or cancel it."
+    );
     return;
   }
 
@@ -125,7 +130,14 @@ function startCountdown() {
 
   let seconds = minutes * 60;
 
-  countdownDisplay.textContent = `${minutes}m 0s`;
+  if (PausedTime > 0) {
+    seconds = PausedTime;
+    PausedTime = 0; // Reset PausedTime after resuming
+  }
+
+  countdownDisplay.textContent = `${Math.floor(seconds / 60)}m ${
+    seconds % 60
+  }s`;
 
   CountdownInterval = setInterval(() => {
     const minutesRemaining = Math.floor(seconds / 60);
@@ -150,6 +162,12 @@ function startCountdown() {
 
 function pauseTimer() {
   clearInterval(CountdownInterval);
+
+  // Save the value of the counter at paused moment
+  PausedTime =
+    parseInt(document.getElementById("countdown").textContent.split(" ")[0]) *
+      60 +
+    parseInt(document.getElementById("countdown").textContent.split(" ")[1]);
 }
 
 function resumeTimer() {
