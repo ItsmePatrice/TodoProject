@@ -26,8 +26,6 @@
       </div>
     </span>
 
-
-
     <div id="countdown-container">
         <input type="number" id="countdown-minutes" placeholder="Enter minutes" min="1" required>
         <button id="startCountdownButton" onclick="startCountdown()"><h6>Start Countdown</h6></button>
@@ -35,12 +33,22 @@
           <div id="progress-bar"></div>
         </div>
         <div id="countdown"></div>
-        <!--Pause and play buttons-->
-        <button id="playPauseButton">
-            <i id="playPauseIcon" class="fas fa-play"></i>
-        </button>
-        <!--Restart button-->
-        <!--Stop button-->
+
+        <div class="timerControlButtons">
+
+            <button id="playPauseButton">
+                <i id="playPauseIcon" class="fas fa-play"></i>
+            </button>
+
+            <button id="restartButton" onclick="restartTimer()">
+                <i class="fas fa-redo"></i>
+            </button>
+
+            <button id="stopButton" onclick="stopTimer()">
+                <i class="fas fa-stop"></i>
+            </button>
+            
+        </div>
     </div>
 
     <div class="todoFormsContainer">

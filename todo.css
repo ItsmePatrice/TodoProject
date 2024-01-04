@@ -266,3 +266,27 @@ button {
   position: absolute;
   margin-top: -1em;
 }
+
+.timerControlButtons {
+  position: absolute;
+  margin-left: 55em;
+}
+
+.timerControlButtons button {
+  position: absolute;
+  display: inline-block;
+  margin-top: 14em;
+  text-align: center;
+  cursor: pointer;
+}
+
+#playPauseButton {
+  position: absolute;
+  margin-left: 10em;
+}
+
+#restartButton {
+  position: absolute;
+  margin-left: 12.85em;
+}
+

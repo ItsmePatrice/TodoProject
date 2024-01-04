@@ -115,7 +115,6 @@ function startCountdown() {
   const minutes = parseInt(minutesInput.value);
 
   if (CountdownInterval) {
-    console.log("Countdown is already in progress. Ignoring start request.");
     return;
   }
 
@@ -140,7 +139,7 @@ function startCountdown() {
     progressBar.style.width = `${100 - remainingPercentage}%`;
 
     if (seconds === 0) {
-      clearInterval(countdownInterval);
+      clearInterval(CountdownInterval);
       countdownDisplay.textContent = "Time's up!";
       progressBar.style.width = "100%";
     }
@@ -150,7 +149,7 @@ function startCountdown() {
 }
 
 function pauseTimer() {
-  clearInterval(countdownInterval);
+  clearInterval(CountdownInterval);
 }
 
 function resumeTimer() {
@@ -158,11 +157,31 @@ function resumeTimer() {
 }
 
 function restartTimer() {
-  pauseCountdown();
+  // Stop the current countdown if it's running
+  clearInterval(CountdownInterval);
+
+  // Reset the UI elements and input
+  const countdownDisplay = document.getElementById("countdown");
+  const progressBar = document.getElementById("progress-bar");
   const minutesInput = document.getElementById("countdown-minutes");
+
+  countdownDisplay.textContent = "";
+  progressBar.style.width = "0%";
+  minutesInput.value = "";
+
+  // Start a new countdown
+  startCountdown();
+}
+
+function stopTimer() {
+  // Stop the current countdown if it's running
+  clearInterval(CountdownInterval);
+
+  // Reset the UI elements
+  const countdownDisplay = document.getElementById("countdown");
   const progressBar = document.getElementById("progress-bar");
 
-  minutesInput.value = "";
+  countdownDisplay.textContent = "";
   progressBar.style.width = "0%";
 }
 
